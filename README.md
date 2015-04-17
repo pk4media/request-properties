@@ -1,6 +1,6 @@
 # request-properties
 
-npm install request-properties
+npm install request-properties [![Circle CI](https://circleci.com/gh/pk4media/request-properties.svg?style=svg&circle-token=5cf45691164d58cf70b5c7ccc4becbe294253acb)](https://circleci.com/gh/pk4media/request-properties)
 
 ## Usage
 
