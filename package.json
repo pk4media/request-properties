@@ -1,21 +1,21 @@
 {
   "name": "request-properties",
   "version": "1.0.0",
-  "description": "",
+  "description": "A connect/express middleware for loading request properties",
   "main": "index.js",
   "scripts": {
     "test": "./node_modules/.bin/mocha --require test/support/env --reporter spec --bail --check-leaks test/"
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:pk4media/express-req-properties.git"
+    "url": "git@github.com:pk4media/request-properties.git"
   },
   "author": "David Negstad <davidn@pk4media.com> (https://github.com/dnegstad)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/pk4media/express-req-properties/issues"
+    "url": "https://github.com/pk4media/request-properties/issues"
   },
-  "homepage": "https://github.com/pk4media/express-req-properties",
+  "homepage": "https://github.com/pk4media/request-properties",
   "dependencies": {
     "bluebird": "^2.9.24"
   },
