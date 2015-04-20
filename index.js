@@ -34,6 +34,9 @@ module.exports = function(properties, options) {
           }
 
           next();
+        })
+        .catch(function(error) {
+          next(error);
         });
     } catch(ex) {
       next(ex);
