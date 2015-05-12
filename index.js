@@ -6,9 +6,8 @@ module.exports = function(properties, options) {
   options = options || {};
 
   return function(req, res, next) {
-    var property;
-
     try {
+      var property;
       for (property in properties) {
         if (req.hasOwnProperty(property)) {
           if (options.errorOnDuplicates) {
@@ -29,8 +28,9 @@ module.exports = function(properties, options) {
 
       BPromise.props(properties)
         .then(function(properties) {
-          for (property in properties) {
-            req[property] = properties[property];
+          var requestProperties;
+          for (requestProperties in properties) {
+            req[requestProperties] = properties[requestProperties];
           }
 
           next();
