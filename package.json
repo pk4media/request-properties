@@ -1,6 +1,6 @@
 {
   "name": "request-properties",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A connect/express middleware for loading request properties",
   "main": "index.js",
   "scripts": {
