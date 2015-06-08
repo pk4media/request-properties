@@ -9,28 +9,32 @@ module.exports = function(properties, options) {
     try {
       var property;
       for (property in properties) {
-        if (req.hasOwnProperty(property)) {
-          if (options.errorOnDuplicates) {
-            throw new Error(property + ' already exists on req');
+        (function(property) {
+          if (req.hasOwnProperty(property)) {
+            if (options.errorOnDuplicates) {
+              throw new Error(property + ' already exists on req');
+            }
+
+            if (options.ignoreDuplicates) {
+              return;
+            }
           }
 
-          if (options.ignoreDuplicates) {
-            continue;
+          if (typeof properties[property] === 'function') {
+            properties[property] = BPromise.resolve(properties[property](req));
+          } else {
+            properties[property] = BPromise.resolve(properties[property]);
           }
-        }
-
-        if (typeof properties[property] === 'function') {
-          properties[property] = BPromise.resolve(properties[property](req));
-        } else {
-          properties[property] = BPromise.resolve(properties[property]);
-        }
+        })(property);
       }
 
       BPromise.props(properties)
         .then(function(properties) {
           var requestProperties;
           for (requestProperties in properties) {
-            req[requestProperties] = properties[requestProperties];
+            (function(requestProperties) {
+              req[requestProperties] = properties[requestProperties];
+            })(requestProperties);
           }
 
           next();
